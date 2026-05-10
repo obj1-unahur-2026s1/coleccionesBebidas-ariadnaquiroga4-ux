@@ -12,14 +12,25 @@ object cianuro {
 }
 
 object licuado {
-  var nutrientes = #[10 , 4, 5]
+  const nutrientes = #[10 , 4, 5]
   method rendimientoQueOtorga(dosisConsumida)  {
     return nutrientes.sum()
   }
 }
 object aguaSaborizada {
-  method rendimientoQueOtorga(dosisConsumida) = 1 + whisky.rendimientoQueOtorga(dosisConsumida)
+  var bebida = whisky
+  method rendimientoQueOtorga(dosisConsumida) = 1 + bebida.rendimientoQueOtorga(dosisConsumida / 4)
 }
 object coctel {
-  method rendimientoQueOtorga(dosisConsumida) = tito.sustanciaActual()
+  const bebidas = #[]
+  method agregarBebida(unaBebida) {
+    bebidas.add(unaBebida)
+  }
+  method rendimientoQueOtorga(dosisConsumida) {
+    var acumulador = 0
+    return bebidas.fold(1) {
+      acumulador bebidas -> acumulador * bebidas.rendimientoQueOtorga(dosisConsumida)
+    }
+  }
 }
+

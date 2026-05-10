@@ -14,3 +14,9 @@ describe "Tests de Tito" {
     assert.equals(10, tito.dosisConsumida())
   }
 }
+
+describe "rendimiento coctel" {
+  test "licuado con nuevos ingredientes formando parte del coctel" {
+    
+  }
+}
